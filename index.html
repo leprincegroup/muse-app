@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muse - Your AI Creative Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="brand">
+          <div class="brand-icon">M</div>
+          <span class="brand-name">Muse</span>
+        </div>
+        <button class="new-chat-btn" id="newChatBtn" title="New chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </div>
+
+      <div class="chat-list" id="chatList">
+        <div class="chat-list-label">Today</div>
+        <button class="chat-list-item active" data-chat="1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <span>Facebook ad for skincare</span>
+        </button>
+        <button class="chat-list-item" data-chat="2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <span>Instagram carousel copy</span>
+        </button>
+        <div class="chat-list-label">Yesterday</div>
+        <button class="chat-list-item" data-chat="3">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <span>Banner ad variations for SaaS</span>
+        </button>
+        <button class="chat-list-item" data-chat="4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <span>A/B test headline ideas</span>
+        </button>
+        <div class="chat-list-label">This week</div>
+        <button class="chat-list-item" data-chat="5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <span>Google Display ad copy</span>
+        </button>
+        <button class="chat-list-item" data-chat="6">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <span>Ad concept for protein brand</span>
+        </button>
+      </div>
+
+      <!-- Brand DNA Button -->
+      <div class="sidebar-bottom">
+        <button class="brand-dna-btn" id="brandDnaBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a4 4 0 014 4c0 1.95-1.4 3.58-3.25 3.93"/><path d="M8 8a4 4 0 008 0"/><path d="M12 22a4 4 0 01-4-4c0-1.95 1.4-3.58 3.25-3.93"/><path d="M16 16a4 4 0 01-8 0"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+          <span>Brand DNA</span>
+          <span class="dna-status configured">Configured</span>
+        </button>
+        <button class="settings-btn" id="settingsBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          <span>Settings</span>
+          <span class="api-status" id="apiStatus">No API key</span>
+        </button>
+        <div class="user-pill">
+          <div class="user-avatar">H</div>
+          <span>Hugo L.</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Brand DNA Panel (slide-over) -->
+    <div class="dna-overlay" id="dnaOverlay"></div>
+    <div class="dna-panel" id="dnaPanel">
+      <div class="dna-header">
+        <h2>Brand DNA</h2>
+        <p>Upload your brand assets so Muse always stays on-brand.</p>
+        <button class="dna-close" id="dnaClose">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="dna-body">
+        <!-- Brand Book -->
+        <div class="dna-section">
+          <div class="dna-section-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            <h3>Brand Book</h3>
+          </div>
+          <p class="dna-desc">Upload your brand guidelines PDF so Muse understands your visual identity, typography, and design rules.</p>
+          <div class="dna-upload-zone" id="brandBookZone">
+            <div class="upload-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Drop your brand book here or <strong>browse</strong></span>
+              <span class="upload-hint">PDF, up to 50 MB</span>
+            </div>
+            <input type="file" class="file-input" accept=".pdf" data-zone="brandBookZone" data-label="Brand book">
+          </div>
+          <div class="dna-files" id="brandBookFiles"></div>
+        </div>
+
+        <!-- Website -->
+        <div class="dna-section">
+          <div class="dna-section-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <h3>Website</h3>
+          </div>
+          <p class="dna-desc">Add your website URL so Muse can learn your tone, messaging, and visual style.</p>
+          <div class="dna-link-input">
+            <input type="url" placeholder="https://yourbrand.com" class="form-input" id="websiteUrl" value="https://brightskin.co">
+            <button class="btn-sm" id="websiteSave">Saved</button>
+            <button class="btn-sm btn-sm-primary" id="websiteResearch">Research</button>
+          </div>
+          <div class="brand-research-results" id="brandResearchResults"></div>
+        </div>
+
+        <!-- Tone & Voice -->
+        <div class="dna-section">
+          <div class="dna-section-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            <h3>Tone & Voice</h3>
+          </div>
+          <p class="dna-desc">Describe how your brand sounds. Muse will match this in every ad it generates.</p>
+          <textarea class="form-input dna-textarea" rows="3" id="toneVoice">Friendly, approachable, science-backed. We speak like a knowledgeable friend, not a clinical brand. Slightly playful but never unserious.</textarea>
+        </div>
+
+        <!-- Colors & Fonts -->
+        <div class="dna-section">
+          <div class="dna-section-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            <h3>Colors & Typography</h3>
+          </div>
+          <div class="dna-colors">
+            <div class="color-swatch" style="background:#7c3aed" title="Primary"><span>#7c3aed</span></div>
+            <div class="color-swatch" style="background:#1a1a2e" title="Dark"><span>#1a1a2e</span></div>
+            <div class="color-swatch" style="background:#eab308" title="Accent"><span>#eab308</span></div>
+            <div class="color-swatch add-color" title="Add color">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+          </div>
+          <div class="dna-font-row">
+            <div class="form-group-inline">
+              <label>Heading font</label>
+              <input type="text" class="form-input" value="Instrument Serif" placeholder="e.g. Helvetica">
+            </div>
+            <div class="form-group-inline">
+              <label>Body font</label>
+              <input type="text" class="form-input" value="Inter" placeholder="e.g. Arial">
+            </div>
+          </div>
+        </div>
+
+        <!-- Reference Ads -->
+        <div class="dna-section">
+          <div class="dna-section-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <h3>Reference Ads & Assets</h3>
+          </div>
+          <p class="dna-desc">Upload product photos, past ads, or inspiration images. Muse will use these as reference.</p>
+          <div class="dna-upload-zone" id="assetsZone">
+            <div class="upload-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Drop images here or <strong>browse</strong></span>
+              <span class="upload-hint">PNG, JPG, WebP &middot; up to 10 MB each</span>
+            </div>
+            <input type="file" class="file-input" accept="image/*" multiple data-zone="assetsZone" data-label="Asset">
+          </div>
+          <div class="dna-files" id="assetsFiles"></div>
+        </div>
+      </div>
+
+      <div class="dna-footer">
+        <button class="btn btn-primary" id="dnaSave">Save Brand DNA</button>
+      </div>
+    </div>
+
+    <!-- Main Chat Area -->
+    <main class="main">
+      <!-- Mobile header -->
+      <div class="mobile-header">
+        <button class="sidebar-toggle" id="sidebarToggle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span class="mobile-title">Muse</span>
+        <button class="new-chat-btn mobile" id="newChatMobile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </div>
+
+      <!-- Empty state (new chat) -->
+      <div class="chat-empty" id="chatEmpty">
+        <div class="empty-content">
+          <div class="empty-logo">
+            <div class="empty-icon">M</div>
+          </div>
+          <h1>What static ad do you want to create?</h1>
+          <p>Tell me about your product and I'll craft the copy, concept, and layout for your ad.</p>
+
+          <div class="starter-grid">
+            <button class="starter-card" onclick="useStarter('I sell a lightweight moisturizer for sensitive skin. Create a Facebook single-image ad targeting people frustrated with products that cause irritation.')">
+              <div class="starter-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              </div>
+              <strong>Single image ad</strong>
+              <span>Headline, body, CTA + visual direction</span>
+            </button>
+            <button class="starter-card" onclick="useStarter('Create a 5-slide Instagram carousel ad for a meal prep delivery service. Target: busy professionals who want to eat healthy but have no time to cook.')">
+              <div class="starter-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="14" height="16" rx="2"/><rect x="8" y="2" width="14" height="16" rx="2"/></svg>
+              </div>
+              <strong>Carousel ad</strong>
+              <span>Multi-slide story with copy per card</span>
+            </button>
+            <button class="starter-card" onclick="useStarter('Give me 10 headline + body copy variations for a Google Display banner ad promoting a project management tool. Focus on team productivity.')">
+              <div class="starter-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+              </div>
+              <strong>Ad copy variations</strong>
+              <span>Headlines + body text to A/B test</span>
+            </button>
+            <button class="starter-card" onclick="useStarter('Design an ad concept for a premium protein powder. I want a bold, clean static ad for Instagram feed. The product tastes like a milkshake and targets gym-goers who hate chalky shakes.')">
+              <div class="starter-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+              </div>
+              <strong>Ad concept</strong>
+              <span>Visual direction + copy + layout idea</span>
+            </button>
+          </div>
+
+          <div class="template-selector" id="templateSelector">
+            <div class="template-label">Or pick a format:</div>
+            <div class="template-pills" id="templatePills"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Messages area -->
+      <div class="chat-messages" id="chatMessages"></div>
+
+      <!-- Attachment preview strip -->
+      <div class="attachments-strip" id="attachmentsStrip"></div>
+
+      <!-- Input area -->
+      <div class="chat-input-area" id="chatInputArea">
+        <div class="input-wrapper">
+          <div class="input-actions-left">
+            <button class="attach-btn" id="attachBtn" title="Attach files, photos, or links">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+            </button>
+            <!-- Attach dropdown -->
+            <div class="attach-menu" id="attachMenu">
+              <button class="attach-option" data-type="photo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Product photos</span>
+              </button>
+              <button class="attach-option" data-type="file">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Files & documents</span>
+              </button>
+              <button class="attach-option" data-type="link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+                <span>Paste a link</span>
+              </button>
+              <button class="attach-option" data-type="reference">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>Reference ad / inspiration</span>
+              </button>
+            </div>
+          </div>
+          <textarea id="chatInput" class="chat-input" placeholder="Describe your product and what static ad you need..." rows="1"></textarea>
+          <button class="send-btn" id="sendBtn" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="input-footer">
+          <span>Muse is your AI creative strategist. Built for static ads.</span>
+        </div>
+      </div>
+
+      <!-- Hidden file inputs -->
+      <input type="file" id="photoInput" accept="image/*" multiple hidden>
+      <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt,.csv" multiple hidden>
+      <input type="file" id="refInput" accept="image/*" multiple hidden>
+    </main>
+  </div>
+
+  <!-- Link paste modal -->
+  <div class="modal-overlay" id="linkModal">
+    <div class="modal">
+      <h3>Paste a link</h3>
+      <p>Add a product page, competitor ad, or reference URL.</p>
+      <input type="url" class="form-input" id="linkInput" placeholder="https://...">
+      <div class="modal-actions">
+        <button class="btn-sm" id="linkCancel">Cancel</button>
+        <button class="btn btn-primary btn-sm-primary" id="linkAdd">Add link</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings modal -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal modal--wide">
+      <h3>Settings</h3>
+      <p>Connect your API keys and set generation defaults.</p>
+
+      <div class="settings-section">
+        <div class="settings-section-title">API Keys</div>
+        <label class="form-label">Anthropic Claude API Key</label>
+        <input type="password" class="form-input" id="claudeKeyInput" placeholder="sk-ant-...">
+        <p class="input-hint">Powers AI creative strategy and chat.</p>
+
+        <label class="form-label">Google Gemini API Key</label>
+        <input type="password" class="form-input" id="geminiKeyInput" placeholder="AIza...">
+        <p class="input-hint">Powers image generation (Gemini Flash + Imagen 3).</p>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Strategy Model</div>
+        <div class="pill-group" id="modelSelector">
+          <button class="pill-option" data-value="claude-haiku-4-5-20251001">Haiku</button>
+          <button class="pill-option active" data-value="claude-sonnet-4-6">Sonnet</button>
+          <button class="pill-option" data-value="claude-opus-4-6">Opus</button>
+        </div>
+        <p class="input-hint">Haiku = fastest & cheapest. Sonnet = balanced. Opus = best quality.</p>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Image Quality</div>
+        <div class="pill-group" id="qualitySelector">
+          <button class="pill-option" data-value="fast">Fast</button>
+          <button class="pill-option active" data-value="quality">Quality</button>
+          <button class="pill-option" data-value="pro">Pro</button>
+        </div>
+      </div>
+
+      <p class="input-hint" style="margin-top:8px">Keys stored locally in your browser only.</p>
+      <div class="modal-actions">
+        <button class="btn-sm" id="settingsCancel">Cancel</button>
+        <button class="btn btn-primary btn-sm-primary" id="settingsSave">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=2"></script>
+</body>
+</html>
