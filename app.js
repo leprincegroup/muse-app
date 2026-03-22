@@ -231,20 +231,14 @@ async function generateWithGemini(prompt, size, qualityTier) {
   const apiKey = getGeminiKey();
   if (!apiKey) throw new Error('No Gemini API key set. Add one in Settings.');
 
-  const model = qualityTier === 'pro' ? 'imagen-3.0-generate-002' : 'gemini-2.0-flash-preview-image-generation';
-  const isImagen = model.startsWith('imagen');
+  // Model selection: pro = best quality, quality = balanced, fast = fastest
+  const model = qualityTier === 'pro' ? 'gemini-3-pro-image-preview' : qualityTier === 'fast' ? 'gemini-2.5-flash-image' : 'gemini-3.1-flash-image-preview';
 
-  let url, body;
-  if (isImagen) {
-    url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:predict?key=${apiKey}`;
-    body = { instances: [{ prompt }], parameters: { sampleCount: 1 } };
-  } else {
-    url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-    body = {
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
-    };
-  }
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+  const body = {
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
+  };
 
   const res = await fetch(url, {
     method: 'POST',
@@ -260,18 +254,12 @@ async function generateWithGemini(prompt, size, qualityTier) {
 
   const data = await res.json();
 
-  // Extract base64 image
-  let b64, mime;
-  if (isImagen) {
-    b64 = data.predictions?.[0]?.bytesBase64Encoded;
-    mime = 'image/png';
-  } else {
-    const parts = data.candidates?.[0]?.content?.parts || [];
-    const imgPart = parts.find(p => p.inlineData);
-    if (!imgPart) throw new Error('Gemini returned no image. Try a different prompt.');
-    b64 = imgPart.inlineData.data;
-    mime = imgPart.inlineData.mimeType || 'image/png';
-  }
+  // Extract base64 image from Gemini response
+  const parts = data.candidates?.[0]?.content?.parts || [];
+  const imgPart = parts.find(p => p.inlineData);
+  if (!imgPart) throw new Error('Gemini returned no image. Try a different prompt or a different quality tier.');
+  const b64 = imgPart.inlineData.data;
+  const mime = imgPart.inlineData.mimeType || 'image/png';
 
   if (!b64) throw new Error('No image data in Gemini response.');
 
